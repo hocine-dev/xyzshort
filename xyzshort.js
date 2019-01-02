@@ -19,6 +19,7 @@ var Base64 = {
         }
         return encodedOutput;
     },
+    // Updated on 02 January 2019: Added a comment for clarity
     decode: function(input) {
         var output = "";
         var chr1, chr2, chr3;
