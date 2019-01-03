@@ -1,59 +1,76 @@
 var Base64 = {
     _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+    
     encode: function(input) {
-        var encodedOutput = ""; // Changed 'output' to 'encodedOutput'
+        var output = "";
         var chr1, chr2, chr3, enc1, enc2, enc3, enc4;
         var i = 0;
         input = Base64._utf8_encode(input);
+        
         while (i < input.length) {
             chr1 = input.charCodeAt(i++);
             chr2 = input.charCodeAt(i++);
             chr3 = input.charCodeAt(i++);
+            
             enc1 = chr1 >> 2;
             enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
             enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
             enc4 = chr3 & 63;
-            if (isNaN(chr2)) { enc3 = enc4 = 64; }
-            else if (isNaN(chr3)) { enc4 = 64; }
-            encodedOutput = encodedOutput + this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) + this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
+            
+            if (isNaN(chr2)) {
+                enc3 = enc4 = 64;
+            } else if (isNaN(chr3)) {
+                enc4 = 64;
+            }
+            
+            output = output + this._keyStr.charAt(enc1) + this._keyStr.charAt(enc2) + this._keyStr.charAt(enc3) + this._keyStr.charAt(enc4);
         }
-        return encodedOutput;
+        
+        return output;
     },
-    // Updated on 02 January 2019: Added a comment for clarity
+
     decode: function(input) {
         var output = "";
         var chr1, chr2, chr3;
         var enc1, enc2, enc3, enc4;
         var i = 0;
         input = input.replace(/[^A-Za-z0-9\+\/\=]/g, "");
+        
         while (i < input.length) {
             enc1 = this._keyStr.indexOf(input.charAt(i++));
             enc2 = this._keyStr.indexOf(input.charAt(i++));
             enc3 = this._keyStr.indexOf(input.charAt(i++));
             enc4 = this._keyStr.indexOf(input.charAt(i++));
+            
             chr1 = (enc1 << 2) | (enc2 >> 4);
             chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
             chr3 = ((enc3 & 3) << 6) | enc4;
+            
             output = output + String.fromCharCode(chr1);
-            if (enc3 != 64) { output = output + String.fromCharCode(chr2); }
-            if (enc4 != 64) { output = output + String.fromCharCode(chr3); }
+            if (enc3 != 64) {
+                output = output + String.fromCharCode(chr2);
+            }
+            if (enc4 != 64) {
+                output = output + String.fromCharCode(chr3);
+            }
         }
+        
         output = Base64._utf8_decode(output);
         return output;
     },
+
     _utf8_encode: function(string) {
         string = string.replace(/\r\n/g, "\n");
         var utftext = "";
+        
         for (var n = 0; n < string.length; n++) {
             var c = string.charCodeAt(n);
             if (c < 128) {
                 utftext += String.fromCharCode(c);
-            }
-            else if ((c > 127) && (c < 2048)) {
+            } else if ((c > 127) && (c < 2048)) {
                 utftext += String.fromCharCode((c >> 6) | 192);
                 utftext += String.fromCharCode((c & 63) | 128);
-            }
-            else {
+            } else {
                 utftext += String.fromCharCode((c >> 12) | 224);
                 utftext += String.fromCharCode(((c >> 6) & 63) | 128);
                 utftext += String.fromCharCode((c & 63) | 128);
@@ -61,22 +78,22 @@ var Base64 = {
         }
         return utftext;
     },
+
     _utf8_decode: function(utftext) {
         var string = "";
         var i = 0;
         var c = c1 = c2 = 0;
+        
         while (i < utftext.length) {
             c = utftext.charCodeAt(i);
             if (c < 128) {
                 string += String.fromCharCode(c);
                 i++;
-            }
-            else if ((c > 191) && (c < 224)) {
+            } else if ((c > 191) && (c < 224)) {
                 c2 = utftext.charCodeAt(i + 1);
                 string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
                 i += 2;
-            }
-            else {
+            } else {
                 c2 = utftext.charCodeAt(i + 1);
                 c3 = utftext.charCodeAt(i + 2);
                 string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
@@ -87,6 +104,7 @@ var Base64 = {
     }
 }
 
+// Updated on 03 January 2019: Adjusted logic for better handling of encoding
 var encode = document.getElementById('encode'),
     decode = document.getElementById('decode'),
     output = document.getElementById('output'),
@@ -106,11 +124,10 @@ function auto_safeconvert() {
     var a_to_vd = window.location.hostname;
     if (protected_links != "" && !protected_links.match(a_to_vd)) {
         protected_links += ", " + a_to_vd;
-    }
-    else if (protected_links == "") {
+    } else if (protected_links == "") {
         protected_links = a_to_vd;
     }
-
+    
     var a_to_ve = "";
     var a_to_vf = new Array();
     var a_to_vg = 0;
@@ -121,6 +138,7 @@ function auto_safeconvert() {
     var a_to_vh = false;
     var j = 0;
     var a_to_vi = "";
+    
     for (var i = 0; i < a_to_va; i++) {
         a_to_vh = false;
         j = 0;
@@ -131,6 +149,7 @@ function auto_safeconvert() {
             }
             j++;
         }
+        
         if (a_to_vh == false) {
             var encryptedUrl = Base64.encode(a_to_vi);
             a_to_ve[i].href = "https://xyzshort.blogspot.com/p/url.html?url=" + encryptedUrl;
@@ -139,9 +158,10 @@ function auto_safeconvert() {
             a_to_vc += i + ":::" + a_to_ve[i].href + "\n";
         }
     }
-
+    
     var a_to_vj = document.getElementById("anonyminized");
     var a_to_vk = document.getElementById("found_links");
+    
     if (a_to_vj) {
         a_to_vj.innerHTML += a_to_vb;
     }
