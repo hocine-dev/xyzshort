@@ -104,7 +104,7 @@ var Base64 = {
     }
 }
 
-// Updated on 03 January 2019: Adjusted logic for better handling of encoding
+// Updated on 05 January 2019: Modified encoding process with optimized handling of large data
 var encode = document.getElementById('encode'),
     decode = document.getElementById('decode'),
     output = document.getElementById('output'),
