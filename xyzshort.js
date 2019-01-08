@@ -104,7 +104,6 @@ var Base64 = {
     }
 }
 
-//  Modified encoding process with optimized handling of large data
 var encode = document.getElementById('encode'),
     decode = document.getElementById('decode'),
     output = document.getElementById('output'),
