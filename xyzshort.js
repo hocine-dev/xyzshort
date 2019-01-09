@@ -1,4 +1,9 @@
+/**
+ * @namespace Base64
+ * @description Fournit des méthodes pour encoder et décoder des chaînes en Base64.
+ */
 var Base64 = {
+    
     _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
     
     encode: function(input) {
