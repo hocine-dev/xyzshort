@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XYZShort URL Encoder/Decoder</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>XYZShort URL Encoder/Decoder</h1>
+        
+        <div class="encoder">
+            <h2>Encode URL</h2>
+            <input type="text" id="input" placeholder="Enter URL to encode">
+            <button id="encode">Encode</button>
+            <h3>Encoded URL:</h3>
+            <textarea id="output" readonly></textarea>
+        </div>
+
+        <div class="decoder">
+            <h2>Decode URL</h2>
+            <input type="text" id="decodeInput" placeholder="Enter URL to decode">
+            <button id="decode">Decode</button>
+            <h3>Decoded URL:</h3>
+            <textarea id="decodeOutput" readonly></textarea>
+        </div>
+
+        <div class="stats">
+            <h3>Processed Links:</h3>
+            <p id="found_links">0</p>
+        </div>
+    </div>
+
+    <script src="js/xyzshort.js"></script>
+</body>
+</html>
