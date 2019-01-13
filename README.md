@@ -1,28 +1,28 @@
-# XYZShort Web Interface
+# BaseLink WebTools
 
-XYZShort is a web application that provides a simple interface for encoding and decoding URLs using Base64. This project includes a JavaScript file for the encoding/decoding logic, a CSS file for styling the interface, and an HTML file for the user interface.
+BaseLink WebTools is a web application that provides a simple interface for encoding and decoding URLs using Base64. This project includes a JavaScript file for the encoding/decoding logic, a CSS file for styling the interface, and an HTML file for the user interface.
 
 ## Project Structure
 
 ```
-xyzshort-web
+baselink-webtools
 ├── src
 │   ├── css
 │   │   └── styles.css       # Styles for the web interface
 │   ├── js
-│   │   └── xyzshort.js      # JavaScript for encoding/decoding URLs
+│   │   └── baselink.js      # JavaScript for encoding/decoding URLs
 │   └── index.html           # Main HTML document for the user interface
 └── README.md                # Project documentation
 ```
 
 ## Getting Started
 
-To set up the XYZShort web application, follow these steps:
+To set up the BaseLink WebTools application, follow these steps:
 
 1. **Clone the Repository**
    ```bash
    git clone <repository-url>
-   cd xyzshort-web
+   cd baselink-webtools
    ```
 
 2. **Open the Application**
@@ -32,7 +32,8 @@ To set up the XYZShort web application, follow these steps:
 
 - **Encoding URLs**: Enter a URL in the input field and click the "Encode" button to convert it to a Base64 encoded string.
 - **Decoding URLs**: Enter a Base64 encoded string in the input field and click the "Decode" button to convert it back to the original URL.
-- The output will be displayed below the input fields, along with the number of processed links.
+
+The output will be displayed below the input fields, along with the number of processed links.
 
 ## Contributing
 
