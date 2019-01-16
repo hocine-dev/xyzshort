@@ -9,32 +9,36 @@
 <body>
     <div class="container">
         <h1>BaseLink-WebTools URL Encoder/Decoder</h1>
-        
+
+        <!-- Encoder Section -->
         <div class="encoder">
             <h2>Encode URL</h2>
-            <input type="text" id="input" placeholder="Enter URL to encode">
+            <input type="text" id="input" placeholder="Enter text to encode">
             <button id="encode">Encode</button>
-            <h3>Encoded URL:</h3>
+            <h3>Encoded Output:</h3>
             <textarea id="output" readonly></textarea>
         </div>
 
+        <!-- Decoder Section -->
         <div class="decoder">
             <h2>Decode URL</h2>
-            <input type="text" id="decodeInput" placeholder="Enter URL to decode">
+            <input type="text" id="input" placeholder="Enter text to decode">
             <button id="decode">Decode</button>
-            <h3>Decoded URL:</h3>
-            <textarea id="decodeOutput" readonly></textarea>
+            <h3>Decoded Output:</h3>
+            <textarea id="output" readonly></textarea>
         </div>
 
+        <!-- Statistics Section -->
         <div class="stats">
             <h3>Processed Links:</h3>
-            <p id="found_links">0</p>
+            <p id="processed-links-count">Processed Links: 0</p>
         </div>
     </div>
+
     <footer>
         &copy; 2019 Created by Hocine HAMAMA
     </footer>
 
-    <script src="js/baselink.js"></script>
+    <script src="js/baselink.js" defer></script>
 </body>
 </html>

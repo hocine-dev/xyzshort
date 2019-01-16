@@ -1,5 +1,5 @@
 var Base64 = {
-    _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=!$€",
+    _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
     
     encode: function(input) {
         var output = "";
@@ -54,6 +54,9 @@ var Base64 = {
                 output = output + String.fromCharCode(chr3);
             }
         }
+        
+        // Remove padding characters
+        output = output.replace(/\0/g, '');
         
         output = Base64._utf8_decode(output);
         return output;
